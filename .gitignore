@@ -1,0 +1,14 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+*.sqlite3
+db.sqlite3
+*.log
+.DS_Store
+*.egg-info/
+.env.*
+*.swp
+docker/postgres_data/
