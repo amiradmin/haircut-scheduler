@@ -3,19 +3,23 @@ version: '3.9'
 services:
   db:
     image: postgres:15
-    restart: always
+    container_name: haircut_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     environment:
       POSTGRES_DB: haircut_db
       POSTGRES_USER: haircut_user
-      POSTGRES_PASSWORD: yourpassword
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      POSTGRES_PASSWORD: securepassword123
     ports:
       - "5432:5432"
 
   backend:
     build:
-      context: ../backend   # یا اگر فایل compose ریشه‌ای شد: ./backend
+      context: ../backend
+    container_name: haircut_backend
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ../backend:/app
     ports:
@@ -24,9 +28,6 @@ services:
       - ../backend/.env
     depends_on:
       - db
-    command: >
-      sh -c "python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
 
 volumes:
   postgres_data:
