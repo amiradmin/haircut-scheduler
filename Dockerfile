@@ -20,4 +20,4 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY backend /app/
 
 # Run migrations and collect static files on startup
-CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn backend.wsgi:application --bind 0.0.0.0:8000"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn backend.core.wsgi:application --bind 0.0.0.0:8000"]
