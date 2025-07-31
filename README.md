@@ -84,6 +84,20 @@ haircut-scheduler/
 | `/api/appointments/`     | POST   | Book appointment                  |
 | `/api/appointments/my/`  | GET    | View user's bookings              |
 
+
+---
+
+## 📘 API Documentation
+
+This project uses **Swagger UI** (via [`drf-yasg`](https://github.com/axnsan12/drf-yasg)) for interactive API documentation.
+
+After running the backend server, visit the following URLs:
+
+- 🌀 **Swagger UI:** [http://localhost:8000/swagger/](http://localhost:8000/swagger/)
+- 📘 **ReDoc:** [http://localhost:8000/redoc/](http://localhost:8000/redoc/)
+- 📄 **Schema JSON:** [http://localhost:8000/swagger.json](http://localhost:8000/swagger.json)
+- 📄 **Schema YAML:** [http://localhost:8000/swagger.yaml](http://localhost:8000/swagger.yaml)
+
 ---
 
 ## 🤝 Contributors
