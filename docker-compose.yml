@@ -15,17 +15,18 @@ services:
 
   backend:
     build:
-      context: ../backend
+      context: .         # Changed from ./backend to . (root folder)
+      dockerfile: Dockerfile  # Specify dockerfile explicitly
     container_name: haircut_backend
     command: >
       sh -c "python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ../backend:/app
+      - ./backend:/app    # Mount backend folder inside container at /app
     ports:
       - "8000:8000"
     env_file:
-      - ../backend/.env
+      - ./backend/.env   # Adjusted path relative to docker-compose.yml location
     depends_on:
       - db
 

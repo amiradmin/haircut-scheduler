@@ -4,19 +4,19 @@ services:
     env: docker
     repo: https://github.com/amiradmin/haircut-scheduler.git
     branch: main
-    dockerfilePath: backend/Dockerfile
+    dockerfilePath: Dockerfile   # Notice this is now just 'Dockerfile' at root
     envVars:
       - key: DEBUG
-        value: True
+        value: "True"
       - key: SECRET_KEY
-        value: your-secret-key
+        value: "your-secret-key"
       - key: DATABASE_NAME
-        value: haircut_db
+        value: "haircut_db"
       - key: DATABASE_USER
-        value: haircut_user
+        value: "haircut_user"
       - key: DATABASE_PASSWORD
-        value: securepassword123
+        value: "securepassword123"
       - key: DATABASE_HOST
-        value: YOUR_DB_HOST
+        value: "YOUR_DB_HOST"
       - key: DATABASE_PORT
-        value: 5432
+        value: "5432"
