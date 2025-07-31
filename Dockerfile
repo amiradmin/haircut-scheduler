@@ -1,23 +1,19 @@
+# Dockerfile at root
+
 FROM python:3.11-slim
 
-# Environment settings
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Set work directory
+# Use the inner directory as workdir
 WORKDIR /app
 
-# Install system dependencies (often needed)
-RUN apt-get update \
-    && apt-get install -y build-essential libpq-dev curl \
-    && apt-get clean
+COPY backend/requirements.txt .
 
-# Install Python dependencies
-COPY backend/requirements.txt /app/
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Copy Django project
-COPY backend /app/
+COPY backend/ .
 
-# Run migrations and collect static files on startup
-CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn backend.core.wsgi:application --bind 0.0.0.0:8000"]
+RUN python manage.py collectstatic --noinput
+
+CMD gunicorn core.wsgi:application --bind 0.0.0.0:$PORT

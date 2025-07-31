@@ -3,7 +3,7 @@ services:
     name: haircut-backend
     env: docker
     repo: https://github.com/amiradmin/haircut-scheduler.git
-    branch: master  # Make sure this is your default GitHub branch
+    branch: master  # or your default branch
     dockerfilePath: Dockerfile
     envVars:
       - key: DEBUG
