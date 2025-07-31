@@ -2,7 +2,7 @@ services:
   - type: web
     name: haircut-backend
     env: docker
-    repo: https://github.com/YOUR_USERNAME/YOUR_REPO_NAME
+    repo: https://github.com/amiradmin/haircut-scheduler.git
     branch: main
     dockerfilePath: backend/Dockerfile
     envVars:
@@ -17,6 +17,6 @@ services:
       - key: DATABASE_PASSWORD
         value: securepassword123
       - key: DATABASE_HOST
-        value: YOUR_DB_HOST  # Usually "db" if inside same docker-compose, or external hostname.
+        value: YOUR_DB_HOST
       - key: DATABASE_PORT
         value: 5432
