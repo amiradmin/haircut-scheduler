@@ -14,6 +14,6 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY backend/ .
 
-RUN python manage.py collectstatic --noinput
+# RUN python manage.py collectstatic --noinput
 
 CMD gunicorn core.wsgi:application --bind 0.0.0.0:$PORT

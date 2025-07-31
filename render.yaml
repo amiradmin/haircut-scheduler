@@ -4,20 +4,25 @@ services:
     env: docker
     repo: https://github.com/amiradmin/haircut-scheduler.git
     branch: master  # or your default branch
+startCommand: >
+  echo "Collecting static files..." &&
+  python manage.py collectstatic --noinput &&
+  echo "Starting Gunicorn..." &&
+  gunicorn core.wsgi:application --bind 0.0.0.0:$PORT
     dockerfilePath: Dockerfile
     envVars:
       - key: DEBUG
         value: "True"
       - key: SECRET_KEY
-        value: "django-insecure-0-gt4ini1g8#d%t0cmgel_^v@3iz*2!6pf0&+1gpvd3yt8n4z%"
+        value: "django-insecure-..."
       - key: DATABASE_NAME
         value: "haircut_db"
       - key: DATABASE_USER
         value: "haircut_user"
       - key: DATABASE_PASSWORD
-        value: "4mq4MMnxudvGD5v54u9gxhO1JhIQX4bz"
+        value: "..."
       - key: DATABASE_HOST
-        value: "dpg-d25gujjuibrs73akdjpg-a"
+        value: "..."
       - key: DATABASE_PORT
         value: "5432"
       - key: DJANGO_SETTINGS_MODULE
