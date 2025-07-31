@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: haircut-backend
+    env: docker
+    repo: https://github.com/YOUR_USERNAME/YOUR_REPO_NAME
+    branch: main
+    dockerfilePath: backend/Dockerfile
+    envVars:
+      - key: DEBUG
+        value: True
+      - key: SECRET_KEY
+        value: your-secret-key
+      - key: DATABASE_NAME
+        value: haircut_db
+      - key: DATABASE_USER
+        value: haircut_user
+      - key: DATABASE_PASSWORD
+        value: securepassword123
+      - key: DATABASE_HOST
+        value: YOUR_DB_HOST  # Usually "db" if inside same docker-compose, or external hostname.
+      - key: DATABASE_PORT
+        value: 5432
