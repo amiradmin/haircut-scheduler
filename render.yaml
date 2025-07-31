@@ -3,8 +3,8 @@ services:
     name: haircut-backend
     env: docker
     repo: https://github.com/amiradmin/haircut-scheduler.git
-    branch: main
-    dockerfilePath: Dockerfile   # Notice this is now just 'Dockerfile' at root
+    branch: master  # Make sure this is your default GitHub branch
+    dockerfilePath: Dockerfile
     envVars:
       - key: DEBUG
         value: "True"
@@ -17,6 +17,6 @@ services:
       - key: DATABASE_PASSWORD
         value: "securepassword123"
       - key: DATABASE_HOST
-        value: "YOUR_DB_HOST"
+        value: haircut-db.onrender.com  # Replace with actual DB hostname
       - key: DATABASE_PORT
         value: "5432"
