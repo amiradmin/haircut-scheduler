@@ -8,7 +8,8 @@ startCommand: >
   echo "Collecting static files..." &&
   python manage.py collectstatic --noinput &&
   echo "Starting Gunicorn..." &&
-  gunicorn core.wsgi:application --bind 0.0.0.0:$PORT
+  gunicorn core.wsgi:application --bind 0.0.0.0:$PORT &&
+  python manage.py create_default_superuser 
     dockerfilePath: Dockerfile
     envVars:
       - key: DEBUG
@@ -27,3 +28,9 @@ startCommand: >
         value: "5432"
       - key: DJANGO_SETTINGS_MODULE
         value: core.settings
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: amir
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: amir@example.com
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: Eddy@747
