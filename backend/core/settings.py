@@ -21,7 +21,11 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*').split(',')
 
 
-CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',')
+CSRF_TRUSTED_ORIGINS = [
+    "https://haircut-scheduler.onrender.com",
+    "http://localhost",
+    "http://127.0.0.1",
+]
 
 
 # Application definition
