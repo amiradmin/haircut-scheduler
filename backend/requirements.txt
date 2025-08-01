@@ -17,3 +17,4 @@ Pillow
 whitenoise
 gunicorn
 python-decouple
+django-cors-headers

@@ -9,7 +9,7 @@ echo "Creating superuser..."
 python manage.py shell << EOF
 from django.contrib.auth import get_user_model
 User = get_user_model()
-username = 'amir'
+username = 'amir1'
 password = 'Eddy@747'
 email = 'amirbehvandi747@gmail.com'
 if not User.objects.filter(username=username).exists():
