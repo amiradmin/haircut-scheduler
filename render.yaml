@@ -1,21 +1,23 @@
+
+
 services:
   - type: web
     name: haircut-backend
     env: docker
     repo: https://github.com/amiradmin/haircut-scheduler.git
     branch: master  # or your default branch
-startCommand: >
-  echo "Collecting static files..." &&
-  python manage.py collectstatic --noinput &&
-  echo "Starting Gunicorn..." &&
-  gunicorn core.wsgi:application --bind 0.0.0.0:$PORT &&
-  python manage.py create_default_superuser 
     dockerfilePath: Dockerfile
+    startCommand: >
+      echo "Collecting static files..." &&
+      python manage.py collectstatic --noinput &&
+      echo "Starting Gunicorn..." &&
+      gunicorn core.wsgi:application --bind 0.0.0.0:$PORT &&
+      python manage.py create_default_superuser
     envVars:
       - key: DEBUG
         value: "True"
       - key: SECRET_KEY
-        value: "django-insecure-..."
+        value: "django-insecure-..."  # Replace with your real secret key
       - key: DATABASE_NAME
         value: "haircut_db"
       - key: DATABASE_USER
@@ -31,6 +33,44 @@ startCommand: >
       - key: DJANGO_SUPERUSER_USERNAME
         value: amir
       - key: DJANGO_SUPERUSER_EMAIL
-        value: amir@example.com
+        value: amirbehvandi747@gmail.com
       - key: DJANGO_SUPERUSER_PASSWORD
         value: Eddy@747
+
+#services:
+#  - type: web
+#    name: haircut-backend
+#    env: docker
+#    repo: https://github.com/amiradmin/haircut-scheduler.git
+#    branch: master  # or your default branch
+#startCommand: >
+#  echo "Collecting static files..." &&
+#  python manage.py collectstatic --noinput &&
+#  echo "Starting Gunicorn..." &&
+#  gunicorn core.wsgi:application --bind 0.0.0.0:$PORT &&
+#  python manage.py create_default_superuser
+#    dockerfilePath: Dockerfile
+#    envVars:
+#      - key: DEBUG
+#        value: "True"
+#      - key: SECRET_KEY
+#        value: "django-insecure-..."
+#      - key: DATABASE_NAME
+#        value: "haircut_db"
+#      - key: DATABASE_USER
+#        value: "haircut_user"
+#      - key: DATABASE_PASSWORD
+#        value: "..."
+#      - key: DATABASE_HOST
+#        value: "..."
+#      - key: DATABASE_PORT
+#        value: "5432"
+#      - key: DJANGO_SETTINGS_MODULE
+#        value: core.settings
+#      - key: DJANGO_SUPERUSER_USERNAME
+#        value: amir
+#      - key: DJANGO_SUPERUSER_EMAIL
+#        value: amir@example.com
+#      - key: DJANGO_SUPERUSER_PASSWORD
+#        value: Eddy@747
+
