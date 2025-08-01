@@ -17,7 +17,7 @@ services:
       - key: DEBUG
         value: "True"
       - key: SECRET_KEY
-        value: "django-insecure-..."  # Replace with your real secret key
+        value: "django-insecure-0-gt4ini1g8#d%t0cmgel_^v@3iz*2!6pf0&+1gpvd3yt8n4z%"
       - key: DATABASE_NAME
         value: "haircut_db"
       - key: DATABASE_USER
