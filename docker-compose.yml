@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_DB: haircut_db
       POSTGRES_USER: haircut_user
-      POSTGRES_PASSWORD: securepassword123
+      POSTGRES_PASSWORD: 4mq4MMnxudvGD5v54u9gxhO1JhIQX4bz
     ports:
       - "5432:5432"
 

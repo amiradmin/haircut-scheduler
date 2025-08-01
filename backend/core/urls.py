@@ -43,6 +43,8 @@ urlpatterns = [
     path('', lambda request: redirect('/admin/')),
     path('admin/', admin.site.urls),
     path('api/', include('appointments.urls')),
+    path('api/accounts/', include('accounts.urls')),
+
     # JWT Auth
     path('api/auth/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
