@@ -3,7 +3,7 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-.env
+backend/.env
 *.sqlite3
 db.sqlite3
 *.log

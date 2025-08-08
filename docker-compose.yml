@@ -22,7 +22,7 @@ services:
       DJANGO_SUPERUSER_USERNAME: amir
       DJANGO_SUPERUSER_PASSWORD: Eddy@747
       DJANGO_SUPERUSER_EMAIL: amirbehvandi747@gmail.com
-    command: ["/app/entrypoint.sh", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+    command: ["bash", "/app/entrypoint.sh", "python", "manage.py", "runserver", "0.0.0.0:8000"]
     volumes:
       - ./backend:/app
     ports:
@@ -34,38 +34,3 @@ services:
 
 volumes:
   postgres_data:
-
-#version: '3.9'
-#
-#services:
-#  db:
-#    image: postgres:15
-#    container_name: haircut_db
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data/
-#    environment:
-#      POSTGRES_DB: haircut_db
-#      POSTGRES_USER: haircut_user
-#      POSTGRES_PASSWORD: 4mq4MMnxudvGD5v54u9gxhO1JhIQX4bz
-#    ports:
-#      - "5432:5432"
-#
-#  backend:
-#    build:
-#      context: .         # Changed from ./backend to . (root folder)
-#      dockerfile: Dockerfile  # Specify dockerfile explicitly
-#    container_name: haircut_backend
-#    command: >
-#      sh -c "python manage.py migrate &&
-#             python manage.py runserver 0.0.0.0:8000"
-#    volumes:
-#      - ./backend:/app    # Mount backend folder inside container at /app
-#    ports:
-#      - "8000:8000"
-#    env_file:
-#      - ./backend/.env   # Adjusted path relative to docker-compose.yml location
-#    depends_on:
-#      - db
-#
-#volumes:
-#  postgres_data:
