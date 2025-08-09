@@ -18,7 +18,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     phone = models.CharField(max_length=20)
     user_type = models.CharField(max_length=10, choices=USER_TYPES)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    avatar = models.ImageField(upload_to='media/avatars/', null=True, blank=True)
 
     def __str__(self) -> str:
         """
