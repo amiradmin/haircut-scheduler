@@ -43,3 +43,12 @@ class BarberSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'phone', 'avatar']
+
+
+class CustomerSerializer(serializers.ModelSerializer):
+    phone = serializers.CharField(source='profile.phone', read_only=True)
+    avatar = serializers.ImageField(source='profile.avatar', read_only=True)
+
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'phone', 'avatar')
