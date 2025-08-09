@@ -2,10 +2,20 @@ from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 from rest_framework import generics, status, permissions
 from rest_framework.response import Response
-from .serializers import RegisterSerializer, UserSerializer, ChangePasswordSerializer
+from .serializers import RegisterSerializer, UserSerializer, ChangePasswordSerializer, BarberSerializer
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 
+class BarberListView(generics.ListAPIView):
+    """
+    get:
+    Return a list of all users with user_type 'barber'.
+    """
+    serializer_class = BarberSerializer
+    permission_classes = [permissions.AllowAny]  # or IsAuthenticated if you want to restrict
+
+    def get_queryset(self):
+        return User.objects.filter(profile__user_type='barber')
 
 class RegisterView(generics.CreateAPIView):
     """
