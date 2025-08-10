@@ -5,9 +5,17 @@ from rest_framework import serializers
 from .models import UserProfile
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add user id inside the token claims
+        token['user_id'] = user.id
+        return token
+
     def validate(self, attrs):
         data = super().validate(attrs)
-        data['user_id'] = self.user.id
+        data['user_id'] = self.user.id  # Optional: also send user_id in response JSON
         return data
 
 
